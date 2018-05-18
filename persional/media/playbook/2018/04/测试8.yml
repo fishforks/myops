@@ -1,0 +1,7 @@
+---
+- hosts: all
+  sudo: True
+  gather_facts: no
+  tasks:
+  - name: Add user
+    user: name="xianyu" state=present createhome=yes
