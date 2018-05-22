@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/zTree_v3-master/css/demo.css" type="text/css">
+  <link rel="stylesheet" href="/static/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/zTree_v3-master/js/jquery.ztree.core.js"></script>
+
+</head>
+<body>
+<div class="col-xs-3">
+     <div id="ztree" class="ztree"></div>
+</div>
+
+<script>
+
+       /*配置四步走第一步：定义一个ztree对象*/
+       var zTreeObj;
+
+       /* 配置四步走第二步：zTree 的参数配置, 最常用的参数就是定义回调函数了 */
+       var setting = {
+            callback: {
+                onClick: zTreeOnClick     // 定义节点点击事件函数
+            },
+            view: {
+                fontCss : {fontSize:"16px"}
+            }
+       };
+
+       /* 配置四步走第三步：获取数据 ，生产环境中后台数据拼接成这个格式就ok*/
+       var zNodes = [
+	   {"children": [{"pid": 1, "name": "web", "id": 2},
+				{"pid": 1, "name": "wap", "id": 3},
+				{"pid": 1, "name": "app", "id": 4},
+				{"pid": 1, "name": "api", "id": 5}],
+                  "pid": 0, "name": "\u623f\u4ea7", "id": 1},
+           {"children": [{"pid": 6, "name": "web", "id": 7},
+               {"pid": 6, "name": "wap", "id": 8},
+               {"pid": 6, "name": "app", "id": 9},
+               {"pid": 6, "name": "api", "id": 10}],
+                "pid": 0, "name": "\u62db\u8058", "id": 6},
+           {"children": [{"pid": 11, "name": "web", "id": 12},
+               {"pid": 11, "name": "wap", "id": 13},
+               {"pid": 11, "name": "app", "id": 14},
+               {"pid": 11, "name": "api", "id": 15}],
+ "pid": 0, "name": "\u4e8c\u624b", "id": 11},
+           {"children": [{"pid": 16, "name": "web", "id": 17},
+               {"pid": 16, "name": "wap", "id": 18},
+               {"pid": 16, "name": "app", "id": 19}],
+ "pid": 0, "name": "\u670d\u52a1", "id": 16},
+          ];
+
+
+          /* 配置四步走第四步：将数据渲染到对应的div中*/
+         $(function(){
+           	zTreeObj = $.fn.zTree.init($("#ztree"), setting, zNodes);
+         })
+
+
+      /*  节点事件函数，常用场景为获取节点的数据，然后通过ajax执行需要的操作 */
+      /*  鼠标点击的某一个节点就叫treeNode, 可以通过treeNode.属性，拿到这个节点定义的所有值 */
+     function zTreeOnClick(event, treeId, treeNode) {
+                   console.log(treeNode)
+            console.log(treeNode.tId + ", " + treeNode.name);
+     }
+
+    </script>
+</body>
+</html>

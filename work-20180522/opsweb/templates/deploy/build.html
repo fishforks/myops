@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}发布系统{% endblock %}
+
+
+{% block breadcrunb %}
+  <h1>
+     Dashboard
+    <small>Version 2.0</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">构建应用</li>
+  </ol>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<!-- Main row -->
+<div class="row">
+<!-- Left col -->
+<div class="col-md-12">
+
+<!-- TABLE: LATEST ORDERS -->
+<div class="box box-info">
+
+<div class="box-header with-border">
+<ul id="myTab" class="nav  nav-pills">
+        <li class="active"><a href="#test" data-toggle="tab">测试环境</a></li>
+        <li><a href="#dev" data-toggle="tab">开发环境</a></li>
+</ul>
+  <div class="box-tools pull-right">
+    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+    </button>
+    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+  </div>
+</div>
+<!-- /.box-header -->
+
+<div class="box-body">
+    {% if msg %}
+            <div class="alert alert-success alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                {{ msg | safe }}
+            </div>
+        {% elif errmsg %}
+            <div class="alert alert-danger alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                {{ errmsg | safe }}
+            </div>
+    {% endif %}
+
+
+    <br>
+    <br>
+
+
+{#    <form method="post" action="" class="form-horizontal">#}
+{##}
+{#        <div class="form-group">#}
+{#            <label class="col-sm-2 control-label">测试环境项目名称：</label>#}
+{#            <div class="col-sm-8">#}
+{#                 <select class="test form-control m-b" name="jobname">#}
+{#                     {% for job in all_jobs %}#}
+{#                         <option selected="selected" value="{{ job.fullname }}">{{ job.fullname }}</option>#}
+{#                     {% endfor %}#}
+{#                 </select>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="form-group">#}
+{#            <label class="col-sm-2 control-label">开发环境项目名称：</label>#}
+{#            <div class="col-sm-8">#}
+{#                 <select class="dev form-control m-b" name="jobname">#}
+{#                     {% for job in all_jobs %}#}
+{#                         <option selected="selected" value="{{ job.fullname }}">{{ job.fullname }}</option>#}
+{#                     {% endfor %}#}
+{#                 </select>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+{#        <div class="hr-line-dashed"></div>#}
+{#        <div class="form-group">#}
+{#            <div class="col-sm-4 col-sm-offset-2">#}
+{#            <button class="btn btn-primary" type="submit">构建项目</button>#}
+{##}
+{##}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#    </form>#}
+
+
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="test">
+            <form method="post" action="" class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">测试环境项目名称：</label>
+            <div class="col-sm-8">
+                 <select class="test form-control m-b" name="jobname">
+                     {% for job in test_jobs %}
+                         <option selected="selected" value="{{ job.fullname }}">{{ job.fullname }}</option>
+                     {% endfor %}
+                 </select>
+            </div>
+        </div>
+
+
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2">
+            <button class="btn btn-primary" type="submit">构建项目</button>
+
+
+            </div>
+        </div>
+
+    </form>
+	</div>
+
+
+	<div class="tab-pane fade" id="dev">
+            <form method="post" action="" class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">开发环境项目名称：</label>
+            <div class="col-sm-8">
+                 <select class="dev form-control m-b" name="jobname">
+                     {% for job in dev_jobs %}
+                         <option selected="selected" value="{{ job.fullname }}">{{ job.fullname }}</option>
+                     {% endfor %}
+                 </select>
+            </div>
+        </div>
+
+
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2">
+            <button class="btn btn-primary" type="submit">构建项目</button>
+
+
+            </div>
+        </div>
+
+    </form>
+	</div>
+</div>
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
